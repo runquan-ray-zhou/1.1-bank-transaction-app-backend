@@ -15,5 +15,16 @@ transactionsRouter.get("/", (req, res) => {
     }
 })
 
+// Show Route
+transactionsRouter.get("/:id", (req, res) => {
+    const { id } = req.params
+    const currentTransaction = transactionArray.find((transaction) => transaction.id === Number(id))
+    if (currentTransaction) {
+            res.status(200).send(currentTransaction)
+    } else {
+        res.status(404).json({error: `Transaction with id ${id} does not exist.`})
+    }
+})
+
 // Export
 module.exports = transactionsRouter;
