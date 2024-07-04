@@ -4,6 +4,9 @@ const express = require("express")
 // Configuration
 const app = express()
 
+// Middleware
+app.use(express.json())
+
 // Controllers
 const transactionsController = require("./controllers/transactionsController")
 
