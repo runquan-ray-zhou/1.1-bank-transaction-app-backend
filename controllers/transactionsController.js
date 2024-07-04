@@ -38,5 +38,17 @@ transactionsRouter.post("/", (req, res) => {
     }
 })
 
+// Delete Route
+transactionsRouter.delete("/:id", (req, res) => {
+    const { id } = req.params
+    const transactionToDeleteIndex = transactionArray.findIndex((transaction) => transaction.id === Number(id))
+    if (transactionToDeleteIndex !== -1) {
+        transactionArray.splice(transactionToDeleteIndex, 1)
+        res.redirect("/transactions")
+    } else {
+        res.status(404).json({error: `Transaction with id ${id} does not exist.`})
+    }
+})
+
 // Export
 module.exports = transactionsRouter;
