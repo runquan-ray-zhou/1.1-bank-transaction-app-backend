@@ -18,11 +18,23 @@ transactionsRouter.get("/", (req, res) => {
 // Show Route
 transactionsRouter.get("/:id", (req, res) => {
     const { id } = req.params
-    const currentTransaction = transactionArray.find((transaction) => transaction.id === Number(id))
-    if (currentTransaction) {
-            res.status(200).send(currentTransaction)
+    const transaction = transactionArray.find((transaction) => transaction.id === Number(id))
+    if (transaction) {
+            res.status(200).send(transaction)
     } else {
         res.status(404).json({error: `Transaction with id ${id} does not exist.`})
+    }
+})
+
+// Create Route
+transactionsRouter.post("/", (req, res) => {
+    const currentTransaction = {id: transactionArray.length + 1, ...req.body}
+    transactionArray.push(currentTransaction)
+    try{
+        res.status(201).send(transactionArray[transactionArray.length - 1])
+    }
+    catch(error) {
+        res.status(404).json({error: `Something Went Wrong!`})
     }
 })
 
