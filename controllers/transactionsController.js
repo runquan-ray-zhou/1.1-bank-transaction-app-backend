@@ -7,7 +7,12 @@ const transactionArray = require("../models/transaction")
 
 // Index Route
 transactionsRouter.get("/", (req, res) => {
-    res.status(200).send(transactionArray)
+    try{
+        res.status(200).send(transactionArray)
+    }
+    catch(error) {
+        res.status(404).json({error: `Something Went Wrong!`})
+    }
 })
 
 // Export
