@@ -19,5 +19,11 @@ app.get("/", (req, res) => {
     res.status(200).send("Welcome to My Bank Transaction App")
 })
 
+// 404 Page Not Found
+app.get("*", (req, res) => {
+    res.status(404).json({ error: "Sorry, no page found" });
+});
+
+
 // Export App
 module.exports = app

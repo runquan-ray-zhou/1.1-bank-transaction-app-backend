@@ -22,7 +22,8 @@ transactionsRouter.get("/:id", (req, res) => {
     if (transaction) {
             res.status(200).send(transaction)
     } else {
-        res.status(404).json({error: `Transaction with id ${id} does not exist.`})
+        // res.status(404).json({error: `Transaction with id ${id} does not exist.`})
+        res.send("Cannot find any Transaction with this id: " + id)
     }
 })
 
@@ -45,7 +46,8 @@ transactionsRouter.delete("/:id", (req, res) => {
     if (transactionToDeleteIndex !== -1) {
         transactionArray.splice(transactionToDeleteIndex, 1)
         res.redirect("/transactions")
-    } else {
+    } 
+    else {
         res.status(404).json({error: `Transaction with id ${id} does not exist.`})
     }
 })
