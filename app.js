@@ -1,11 +1,13 @@
 // Dependencies
 const express = require("express")
+const cors = require("cors")
 
 // Configuration
 const app = express()
 
 // Middleware
 app.use(express.json())
+app.use(cors())
 
 // Controllers
 const transactionsController = require("./controllers/transactionsController")
