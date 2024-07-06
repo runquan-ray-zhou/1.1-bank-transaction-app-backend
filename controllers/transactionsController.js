@@ -28,6 +28,7 @@ transactionsRouter.get("/:id", (req, res) => {
     }
 })
 
+// Function to change date to human readable
 function changeDateToHumanReadable(str) {
         
     const monthObj = {
@@ -52,7 +53,6 @@ function changeDateToHumanReadable(str) {
 
 // Create Route
 transactionsRouter.post("/", (req, res) => {
-    // const currentTransaction = {...req.body}
     let newDate = changeDateToHumanReadable(req.body["date"])
     const updatedCurrentTransaction = {...req.body, date: newDate}
     transactionArray.push(updatedCurrentTransaction)
@@ -82,7 +82,9 @@ transactionsRouter.put("/:id", (req, res) => {
     const { id } = req.params
     const transactionToUpdateIndex = transactionArray.findIndex((transaction) => transaction.id === id)
     if (transactionToUpdateIndex !== -1) {
-        transactionArray[transactionToUpdateIndex] = req.body
+        let newDate = changeDateToHumanReadable(req.body["date"])
+        const updatedCurrentTransaction = {...req.body, date: newDate}
+        transactionArray[transactionToUpdateIndex] = updatedCurrentTransaction
         res.status(200).json(transactionArray[transactionToUpdateIndex])
     } else {
         res.status(404).json({error: `Transaction with id ${id} does not exist.`})
