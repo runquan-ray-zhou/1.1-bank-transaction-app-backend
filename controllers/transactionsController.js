@@ -28,10 +28,34 @@ transactionsRouter.get("/:id", (req, res) => {
     }
 })
 
+function changeDateToHumanReadable(str) {
+        
+    const monthObj = {
+        "01" : "Jan",
+        "02" : "Feb",
+        "03" : "Mar",
+        "04" : "Apr",
+        "05" : "May",
+        "06" : "Jun",
+        "07" : "Jul",
+        "08" : "Aug",
+        "09" : "Sep",
+        "10" : "Oct",
+        "11" : "Nov",
+        "12" : "Dec",
+    }
+    
+    let splitDate = str.split("-")
+    
+    return monthObj[splitDate[1]] + " " + splitDate[2] + ", " + splitDate[0]
+}
+
 // Create Route
 transactionsRouter.post("/", (req, res) => {
-    const currentTransaction = {...req.body}
-    transactionArray.push(currentTransaction)
+    // const currentTransaction = {...req.body}
+    let newDate = changeDateToHumanReadable(req.body["date"])
+    const updatedCurrentTransaction = {...req.body, date: newDate}
+    transactionArray.push(updatedCurrentTransaction)
     try{
         res.status(201).send(transactionArray[transactionArray.length - 1])
     }
