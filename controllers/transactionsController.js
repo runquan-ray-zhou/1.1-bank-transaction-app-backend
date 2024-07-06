@@ -47,8 +47,12 @@ function changeDateToHumanReadable(str) {
     }
     
     let splitDate = str.split("-")
+    if (str.includes(",")) {
+        return str
+    } else {
+        return monthObj[splitDate[1]] + " " + splitDate[2] + ", " + splitDate[0]
+    }
     
-    return monthObj[splitDate[1]] + " " + splitDate[2] + ", " + splitDate[0]
 }
 
 // Create Route
