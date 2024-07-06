@@ -1,5 +1,6 @@
 // Dependencies
 const express = require("express")
+const { nanoid } = require("nanoid")
 
 const transactionsRouter = express.Router()
 
@@ -18,7 +19,7 @@ transactionsRouter.get("/", (req, res) => {
 // Show Route
 transactionsRouter.get("/:id", (req, res) => {
     const { id } = req.params
-    const transaction = transactionArray.find((transaction) => transaction.id === Number(id))
+    const transaction = transactionArray.find((transaction) => transaction.id === id)
     if (transaction) {
             res.status(200).send(transaction)
     } else {
@@ -29,7 +30,7 @@ transactionsRouter.get("/:id", (req, res) => {
 
 // Create Route
 transactionsRouter.post("/", (req, res) => {
-    const currentTransaction = {id: transactionArray.length + 1, ...req.body}
+    const currentTransaction = {...req.body}
     transactionArray.push(currentTransaction)
     try{
         res.status(201).send(transactionArray[transactionArray.length - 1])
@@ -42,7 +43,7 @@ transactionsRouter.post("/", (req, res) => {
 // Delete Route
 transactionsRouter.delete("/:id", (req, res) => {
     const { id } = req.params
-    const transactionToDeleteIndex = transactionArray.findIndex((transaction) => transaction.id === Number(id))
+    const transactionToDeleteIndex = transactionArray.findIndex((transaction) => transaction.id === id)
     if (transactionToDeleteIndex !== -1) {
         transactionArray.splice(transactionToDeleteIndex, 1)
         res.redirect("/transactions")
@@ -55,7 +56,7 @@ transactionsRouter.delete("/:id", (req, res) => {
 // Update Route
 transactionsRouter.put("/:id", (req, res) => {
     const { id } = req.params
-    const transactionToUpdateIndex = transactionArray.findIndex((transaction) => transaction.id === Number(id))
+    const transactionToUpdateIndex = transactionArray.findIndex((transaction) => transaction.id === id)
     if (transactionToUpdateIndex !== -1) {
         transactionArray[transactionToUpdateIndex] = req.body
         res.status(200).json(transactionArray[transactionToUpdateIndex])
