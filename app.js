@@ -16,7 +16,7 @@ app.use("/transactions", transactionsController)
 
 // Root/Health Check Route
 app.get("/", (req, res) => {
-    res.status(200).send("Welcome to My Bank Transaction App")
+    res.status(200).send("Welcome to BankBankster App Backend")
 })
 
 // 404 Page Not Found Route
