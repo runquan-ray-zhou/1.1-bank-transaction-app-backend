@@ -14,7 +14,6 @@
 
 - [Installation](#installation)
 - [Usage](#usage)
-- [Badges](#badges)
 - [Technologies](#technologies)
 - [Features](#features)
 
@@ -37,12 +36,6 @@ To begin running the server, type the following in the terminal.
 ```
 nodemon server.js
 ```
-
-
-## Badges
-
-
-![badmath](https://img.shields.io/github/languages/top/lernantino/badmath)
 
 
 ## Technologies
