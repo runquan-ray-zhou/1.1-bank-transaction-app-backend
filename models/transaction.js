@@ -1,5 +1,5 @@
 module.exports = [ 
-    { id: "6DsfSnw", item_name: "OPENING DEPOSIT", amount: 10000, date: (Date().slice(4,10) + ", " + Date().slice(11,15)), from: "SELF", category: "Income" },
+    { id: "6DsfSnw", item_name: "OPENING DEPOSIT", amount: 1000, date: (Date().slice(4,10) + ", " + Date().slice(11,15)), from: "SELF", category: "Income" },
     { id: "JoEasmA", item_name: "GROCERIES", amount: -150, date: (Date().slice(4,10) + ", " + Date().slice(11,15)), from: "SUPERMARKET", category: "Expense" },
     { id: "nUzya7Q", item_name: "SALARY", amount: 2000, date: (Date().slice(4,10) + ", " + Date().slice(11,15)), from: "EMPLOYER", category: "Income" },
     { id: "nrmbXKk", item_name: "UTILITY BILL", amount: -100, date: (Date().slice(4,10) + ", " + Date().slice(11,15)), from: "ELECTRIC COMPANY", category: "Expense" },
